@@ -1,0 +1,26 @@
+{
+  "name": "se_project_express",
+  "version": "0.1.0",
+  "description": "Back End Project",
+  "keywords": [
+    "Project"
+  ],
+  "homepage": "https://github.com/lunkant/se_project_express#readme",
+  "bugs": {
+    "url": "https://github.com/lunkant/se_project_express/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lunkant/se_project_express.git"
+  },
+  "license": "ISC",
+  "author": "Mardochee, Ambroise",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

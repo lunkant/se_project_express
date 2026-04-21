@@ -42,11 +42,11 @@ const deleteClothingItem = (req, res) => {
       console.error("Error deleting clothing item:", err);
 
       if (err.name === "CastError") {
-        return res.status(400).send({ error: "Invalid item ID" });
+        return res.status(400).send({ message: "Invalid item ID" });
       }
 
       if (err.name === "DocumentNotFoundError") {
-        res.status(404).send({ message: "Clothing item not found" });
+        return res.status(404).send({ message: "Clothing item not found" });
       }
 
       return res.status(500).send({ message: err.message });
@@ -63,7 +63,7 @@ const getClothingItemById = (req, res) => {
       console.error("Error fetching clothing item by ID:", err);
 
       if (err.name === "CastError") {
-        return res.status(400).send({ error: "Invalid item ID" });
+        return res.status(400).send({ message: "Invalid item ID" });
       }
 
       if (err.name === "DocumentNotFoundError") {
@@ -73,10 +73,53 @@ const getClothingItemById = (req, res) => {
       return res.status(500).send({ message: err.message });
     });
 };
+const likeItem = (req, res) => {
+  const { itemId } = req.params;
+
+  ClothingItem.findByIdAndUpdate(
+    itemId,
+    { $addToSet: { likes: req.user._id } },
+    { new: true }
+  )
+    .orFail()
+    .then((item) => res.status(200).send(item))
+    .catch((err) => {
+      if (err.name === "CastError") {
+        return res.status(400).send({ message: "Invalid item ID" });
+      }
+      if (err.name === "DocumentNotFoundError") {
+        return res.status(404).send({ message: "Clothing item not found" });
+      }
+      return res.status(500).send({ message: err.message });
+    });
+};
+
+const dislikeItem = (req, res) => {
+  const { itemId } = req.params;
+
+  ClothingItem.findByIdAndUpdate(
+    itemId,
+    { $pull: { likes: req.user._id } },
+    { new: true }
+  )
+    .orFail()
+    .then((item) => res.status(200).send(item))
+    .catch((err) => {
+      if (err.name === "CastError") {
+        return res.status(400).send({ message: "Invalid item ID" });
+      }
+      if (err.name === "DocumentNotFoundError") {
+        return res.status(404).send({ message: "Clothing item not found" });
+      }
+      return res.status(500).send({ message: err.message });
+    });
+};
 
 module.exports = {
   getClothingItems,
   createClothingItem,
   deleteClothingItem,
   getClothingItemById,
+  likeItem,
+  dislikeItem,
 };

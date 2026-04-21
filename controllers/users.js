@@ -37,7 +37,7 @@ const getUserById = (req, res) => {
       console.error("Error fetching user by ID:", err);
 
       if (err.name === "CastError") {
-        return res.status(400).send({ error: "Invalid user ID" });
+        return res.status(400).send({ message: "Invalid user ID" });
       }
 
       if (err.name === "DocumentNotFoundError") {

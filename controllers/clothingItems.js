@@ -7,7 +7,7 @@ const getClothingItems = (req, res) => {
     .then((items) => res.status(200).send(items))
     .catch((err) => {
       console.error("Error fetching clothing items:", err);
-      return res.status(500).send({ error: err.message });
+      return res.status(500).send({ message: err.message });
     });
 };
 
@@ -25,9 +25,9 @@ const createClothingItem = (req, res) => {
     .catch((err) => {
       console.error("Error creating clothing item:", err);
       if (err.name === "ValidationError") {
-        return res.status(400).send({ error: err.message });
+        returnres.status(400).send({ message: err.message });
       }
-      return res.status(500).send({ error: err.message });
+      return res.status(500).send({ message: err.message });
     });
 };
 
@@ -46,10 +46,10 @@ const deleteClothingItem = (req, res) => {
       }
 
       if (err.name === "DocumentNotFoundError") {
-        return res.status(404).send({ error: "Clothing item not found" });
+        res.status(404).send({ message: "Clothing item not found" });
       }
 
-      return res.status(500).send({ error: err.message });
+      return res.status(500).send({ message: err.message });
     });
 };
 
@@ -67,10 +67,10 @@ const getClothingItemById = (req, res) => {
       }
 
       if (err.name === "DocumentNotFoundError") {
-        return res.status(404).send({ error: "Clothing item not found" });
+        return res.status(404).send({ message: "Clothing item not found" });
       }
 
-      return res.status(500).send({ error: err.message });
+      return res.status(500).send({ message: err.message });
     });
 };
 

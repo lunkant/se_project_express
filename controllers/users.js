@@ -7,7 +7,7 @@ const getUsers = (req, res) => {
     .then((users) => res.status(200).send(users))
     .catch((err) => {
       console.error("Error fetching users:", err);
-      return res.status(500).send({ error: err.message });
+      return res.status(500).send({ message: err.message });
     });
 };
 
@@ -20,10 +20,10 @@ const createUser = (req, res) => {
       console.error("Error creating user:", err);
 
       if (err.name === "ValidationError") {
-        return res.status(400).send({ error: err.message });
+        return res.status(400).send({ message: err.message });
       }
 
-      return res.status(500).send({ error: err.message });
+      return res.status(500).send({ message: err.message });
     });
 };
 
@@ -41,10 +41,10 @@ const getUserById = (req, res) => {
       }
 
       if (err.name === "DocumentNotFoundError") {
-        return res.status(404).send({ error: "User not found" });
+        return res.status(404).send({ message: "User not found" });
       }
 
-      return res.status(500).send({ error: err.message });
+      return res.status(500).send({ message: err.message });
     });
 };
 

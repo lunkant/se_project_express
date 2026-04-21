@@ -1,4 +1,4 @@
-//routes/users.js
+// routes/users.js
 const router = require("express").Router();
 const { getUsers, createUser } = require("../controllers/users");
 const { getUserById } = require("../controllers/users");

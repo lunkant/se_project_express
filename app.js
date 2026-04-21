@@ -1,8 +1,9 @@
 const express = require("express");
-const app = express();
-const { Port = 3001 } = process.env;
 const mongoose = require("mongoose");
 const mainRouter = require("./routes/index");
+
+const app = express();
+const { Port = 3001 } = process.env;
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/wtwr_db")

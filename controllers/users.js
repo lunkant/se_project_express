@@ -1,5 +1,5 @@
 // controllers/users.js
-const User = require("../models/User");
+const User = require("../models/user");
 
 // Get all users
 const getUsers = (req, res) => {

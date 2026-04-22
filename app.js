@@ -14,10 +14,6 @@ mongoose
     console.error("Failed to connect to MongoDB", err);
   });
 
-app.get("/", (req, res) => {
-  res.send("Hello, World!");
-});
-
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -28,10 +24,6 @@ app.use((req, res, next) => {
 });
 
 app.use("/", mainRouter);
-
-app.use((req, res) => {
-  res.status(404).send({ message: "Requested resource not found" });
-});
 
 app.listen(Port, () => {
   console.log(`Server is running on http://localhost:${Port}`);

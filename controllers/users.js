@@ -14,7 +14,13 @@ const {
 const createUser = (req, res) => {
   const { name, avatar, email, password } = req.body;
 
-  bcrypt
+  if (!email || !password) {
+    return res
+      .status(BAD_REQUEST_ERROR_CODE)
+      .send({ message: "Email and password are required" });
+  }
+
+  return bcrypt
     .hash(password, 10)
     .then((hashedPassword) =>
       User.create({ name, avatar, email, password: hashedPassword })
@@ -57,10 +63,15 @@ const login = (req, res) => {
       });
       res.status(200).send({ token });
     })
-    .catch(() => {
-      res
-        .status(UNAUTHORIZED_ERROR_CODE)
-        .send({ message: "Incorrect email or password" });
+    .catch((err) => {
+      if (err.message === "Incorrect email or password") {
+        return res
+          .status(UNAUTHORIZED_ERROR_CODE)
+          .send({ message: "Incorrect email or password" });
+      }
+      return res
+        .status(INTERNAL_SERVER_ERROR_CODE)
+        .send({ message: "An error has occurred on the server" });
     });
 };
 

@@ -2,6 +2,8 @@
 
 ## 📌 Project Description
 
+## Project Pitch Video [Loom Project Pitch Video](https://www.loom.com/share/796ac444a66a47aaaa9980af8778e6a0)
+
 This project is the backend server for the **WTWR (What to Wear)** application.
 It provides a RESTful API that allows users to create profiles and manage clothing items based on weather conditions.
 

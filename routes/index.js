@@ -6,9 +6,13 @@ const { NOT_FOUND_ERROR_CODE } = require("../utils/errors");
 const { createUser, login } = require("../controllers/users");
 const { getClothingItems } = require("../controllers/clothingItems");
 const auth = require("../middlewares/auth");
+const {
+  validateUserInfoBody,
+  validateAuthentication,
+} = require("../middlewares/validation");
 
-router.post("/signup", createUser);
-router.post("/signin", login);
+router.post("/signup", validateUserInfoBody, createUser);
+router.post("/signin", validateAuthentication, login);
 router.get("/items", getClothingItems);
 
 router.use(auth);

@@ -28,9 +28,7 @@ const createUser = (req, res, next) => {
     })
     .catch((err) => {
       if (err.code === 11000) {
-        return next(
-          new ConflictError("A user with this email already exists")
-        );
+        return next(new ConflictError("A user with this email already exists"));
       }
       if (err.name === "ValidationError") {
         return next(new BadRequestError("Invalid data."));

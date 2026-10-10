@@ -12,18 +12,8 @@ A RESTful API for **WTWR (What to Wear)**, a weather-based clothing recommendati
 
 Check out these videos, where I describe my project and some challenges I faced while building it:
 
-- [Full-stack project pitch (frontend, backend, and deployment)](ADD_LINK_HERE)
+- [Full-stack project pitch (frontend, backend, and deployment)](https://www.loom.com/share/2a01aa51ee844bbfa6216df5afe3a5b4)
 - [Backend project pitch (earlier sprint)](https://www.loom.com/share/796ac444a66a47aaaa9980af8778e6a0)
-
-## Screenshots
-
-Screenshots of the deployed application:
-
-![Home page showing clothing items for the current weather](screenshots/home.png)
-
-![Profile page with the user's items and likes](screenshots/profile.png)
-
-![Sign up and log in modals](screenshots/auth-modal.png)
 
 ---
 
